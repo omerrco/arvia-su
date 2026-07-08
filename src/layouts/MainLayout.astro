@@ -1,0 +1,39 @@
+---
+import { Font } from "astro:assets";
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const {
+  title,
+  description = "Arvia Su Teknolojileri, ev ve işletmeler için su arıtma ve filtre bakım çözümleri sunar.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="tr">
+  <head>
+    <Font cssVariable="--font-inter" preload />
+    <Font cssVariable="--font-manrope" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+
+  <body class="bg-surface min-h-screen text-ink antialiased">
+    <Header />
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

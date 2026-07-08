@@ -1,0 +1,116 @@
+---
+import Logo from "./Logo.astro";
+
+const navItems = [
+  { label: "Ana Sayfa", href: "/" },
+  { label: "Hakkımızda", href: "/hakkimizda" },
+  { label: "Hizmetler", href: "/hizmetler" },
+  { label: "Ürünler", href: "/urunler" },
+  { label: "Referanslar", href: "/referanslar" },
+  { label: "İletişim", href: "/iletisim" },
+];
+
+const pathname = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/" ? pathname === "/" : pathname.startsWith(href);
+---
+
+<header
+  class="border-line sticky top-0 z-50 border-b bg-white/95 backdrop-blur"
+>
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
+    <Logo />
+
+    <nav class="hidden items-center gap-8 lg:flex" aria-label="Ana menü">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class={`hover:text-brand-600 text-sm font-medium transition ${isActive(item.href) ? "text-brand-600" : "text-slate-600"}`}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="hidden items-center gap-3 lg:flex">
+      <a
+        href="tel:+902120000000"
+        class="hover:text-brand-600 text-sm font-semibold text-slate-600 transition"
+        >0212 000 00 00</a
+      >
+      <a
+        href="/iletisim"
+        class="bg-brand-900 hover:bg-brand-700 rounded-lg px-4 py-2 text-sm font-semibold text-white transition"
+        >Teklif Al</a
+      >
+    </div>
+
+    <button
+      id="menu-button"
+      type="button"
+      class="border-line inline-flex size-10 cursor-pointer items-center justify-center rounded-lg border bg-white text-slate-700 lg:hidden"
+      aria-label="Menüyü aç"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Menüyü aç</span>
+      <span
+        id="menu-icon"
+        class="block h-0.5 w-5 bg-current transition before:block before:h-0.5 before:w-5 before:-translate-y-2 before:bg-current before:transition after:block after:h-0.5 after:w-5 after:translate-y-1.5 after:bg-current after:transition"
+      ></span>
+    </button>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="rounded-card border-line shadow-soft absolute top-full right-4 z-50 hidden w-64 border bg-white p-3 lg:hidden"
+  >
+    <nav aria-label="Mobil menü">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class={
+              "hover:bg-brand-50 hover:text-brand-700 block rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition"
+            }
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<script>
+  const button = document.querySelector("#menu-button");
+  const menu = document.querySelector("#mobile-menu");
+
+  function closeMenu() {
+    button?.setAttribute("aria-expanded", "false");
+    menu?.classList.add("hidden");
+  }
+
+  button?.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    const isOpen = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", String(!isOpen));
+    menu?.classList.toggle("hidden", isOpen);
+  });
+
+  menu?.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  document.addEventListener("click", () => {
+    closeMenu();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    closeMenu();
+  });
+</script>
