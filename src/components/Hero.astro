@@ -1,0 +1,78 @@
+---
+import { Image } from "astro:assets";
+import heroImage from "../../public/images/arvia-hero.png";
+import LinkButton from "./LinkButton.astro";
+import Container from "./Container.astro";
+
+const stats = [
+  { value: "4.800+", label: "Bakım kaydı" },
+  { value: "10+", label: "Yıllık Deneyim" },
+  { value: "7/24", label: "Teknik Destek" },
+];
+---
+
+<section class="bg-white">
+  <Container class="grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-20">
+    <div>
+      <span
+        class="text-brand-700 bg-brand-50/40 mb-3 inline-flex rounded-full px-3 py-2 text-sm font-semibold lg:mb-4"
+      >
+        İstanbul merkezli kurumsal su teknolojileri
+      </span>
+
+      <h1
+        class="text-brand-900 font-display text-5xl leading-[1.02] font-medium tracking-[-0.035em] md:text-6xl"
+      >
+        Ev ve işletmeler için güvenilir su arıtma çözümleri.
+      </h1>
+
+      <p class="text-muted mt-6 max-w-xl text-lg leading-8">
+        Arvia, doğru cihaz seçimi, temiz kurulum ve düzenli bakım takibiyle su
+        arıtma sürecini daha anlaşılır ve sürdürülebilir hale getirir.
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <LinkButton href="/iletisim">Teklif Al</LinkButton>
+        <LinkButton href="/urunler" variant="secondary"
+          >Ürünleri İncele
+        </LinkButton>
+      </div>
+    </div>
+
+    <div class="relative">
+      <div
+        class="border-line shadow-soft rounded-card overflow-hidden border bg-slate-100"
+      >
+        <Image
+          src={heroImage}
+          alt="Modern mutfakta su arıtma sistemi kurulumu"
+          class="h-full min-h-[420px] w-full object-cover"
+        />
+      </div>
+
+      <div
+        class="rounded-card shadow-soft absolute bottom-5 left-5 max-w-xs border border-white/70 bg-white/95 p-4 backdrop-blur"
+      >
+        <p class="text-sm font-semibold text-slate-950">Planlı servis takibi</p>
+        <p class="text-muted mt-1 text-sm leading-6">
+          Kurulumdan sonra filtre değişim tarihleri kayıt altına alınır.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-span-full mt-3 flex justify-around gap-4 lg:mt-6">
+      {
+        stats.map((stat) => (
+          <div class="grid">
+            <strong class="text-brand-800 text-xl font-bold lg:text-2xl">
+              {stat.value}
+            </strong>
+            <span class="text-muted mt-1 text-sm lg:text-base">
+              {stat.label}
+            </span>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</section>
