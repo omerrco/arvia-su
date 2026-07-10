@@ -1,0 +1,34 @@
+---
+import { Icon } from "@lucide/astro";
+import { services } from "../../data/services";
+import Container from "../ui/Container.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+---
+
+<section class="border-line bg-surface border-y py-16 lg:py-20">
+  <Container>
+    <SectionHeading
+      eyebrow="Hizmetler"
+      title="İhtiyaçtan bakıma kadar net bir süreç"
+      description="Arvia'nın hizmet akışı özellikle ev kullanıcıları, küçük işletmeler ve apartman/site yönetimleri için sade tutulur."
+    />
+
+    <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+      {
+        services.map(({ title, description, icon: Icon }) => (
+          <article class="rounded-card border-line hover:border-brand-500 hover:shadow-soft border bg-white p-6 shadow-sm transition hover:-translate-y-1">
+            <div class="bg-brand-50 text-brand-800 flex size-11 items-center justify-center rounded-lg text-sm font-bold">
+              <Icon class="size-6" stroke-width={1.8} aria-hidden="true" />
+            </div>
+
+            <h3 class="font-display mt-5 text-2xl font-semibold tracking-tight text-slate-950">
+              {title}
+            </h3>
+
+            <p class="text-muted mt-3 text-base leading-6">{description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </Container>
+</section>

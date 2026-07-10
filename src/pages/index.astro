@@ -1,5 +1,7 @@
 ---
-import Hero from "../components/Hero.astro";
+import Hero from "../components/sections/Hero.astro";
+import Products from "../components/sections/Products.astro";
+import Services from "../components/sections/Services.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
@@ -8,4 +10,8 @@ import MainLayout from "../layouts/MainLayout.astro";
   description="Ev, kafe, ofis ve apartmanlar için su arıtma, filtre bakım ve merkezi su yumuşatma çözümleri."
 >
   <Hero />
+
+  <Services />
+
+  <Products />
 </MainLayout>
