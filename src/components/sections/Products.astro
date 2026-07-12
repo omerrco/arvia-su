@@ -1,27 +1,32 @@
 ---
 import { products } from "../../data/products";
 import Container from "../ui/Container.astro";
+import Section from "../ui/Section.astro";
 import LinkButton from "../ui/LinkButton.astro";
 import ProductCard from "../ui/ProductCard.astro";
 import SectionHeading from "../ui/SectionHeading.astro";
 ---
 
-<section class="border-line border-y bg-white py-16 lg:py-20">
+<Section class="bg-white">
   <Container>
     <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-      <SectionHeading
-        eyebrow="Ürünler"
-        title="Kullanım alanına göre seçilen sistemler"
-        description="Evlerden işletmelere kadar farklı kullanım ihtiyaçları için
+      <div class="min-w-0 md:flex-1">
+        <SectionHeading
+          eyebrow="Ürünler"
+          title="Kullanım alanına göre seçilen sistemler"
+          description="Evlerden işletmelere kadar farklı kullanım ihtiyaçları için
           geliştirilmiş güvenilir ve yüksek performanslı sistemler."
-      />
-      <LinkButton href="/urunler" size="sm" variant="secondary"
-        >Tüm Ürünleri İnceleyin</LinkButton
-      >
+        />
+      </div>
+      <div class="self-end md:shrink-0">
+        <LinkButton href="/urunler" size="sm" variant="secondary"
+          >Tüm Ürünler</LinkButton
+        >
+      </div>
     </div>
 
     <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {products.map((product) => <ProductCard product={product} />)}
     </div>
   </Container>
-</section>
+</Section>

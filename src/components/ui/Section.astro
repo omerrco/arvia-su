@@ -1,0 +1,11 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<section class=`border-line border-y py-16 lg:py-20 2xl:py-30 ${className}`>
+  <slot />
+</section>

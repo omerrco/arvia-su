@@ -1,0 +1,25 @@
+{
+  "files.watcherExclude": {
+    "**/.astro/**": true,
+    "**/.git/**": true,
+    "**/dist/**": true,
+    "**/node_modules/**": true
+  },
+  "search.exclude": {
+    "**/.astro": true,
+    "**/dist": true,
+    "**/node_modules": true
+  },
+  "tailwindCSS.files.exclude": [
+    "**/.astro/**",
+    "**/dist/**",
+    "**/node_modules/**"
+  ],
+  "tailwindCSS.validate": false,
+  "eslint.enable": false,
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "typescript.tsserver.maxTsServerMemory": 1024,
+  "typescript.tsserver.experimental.enableProjectDiagnostics": false,
+  "git.autofetch": false,
+  "git.autorefresh": false
+}

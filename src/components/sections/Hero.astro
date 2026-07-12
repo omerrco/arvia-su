@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import heroImage from "../../assets/images/arvia-hero.png";
 import Container from "../ui/Container.astro";
 import LinkButton from "../ui/LinkButton.astro";
+import Section from "../ui/Section.astro";
 
 const stats = [
   { value: "4.800+", label: "Bakım kaydı" },
@@ -11,10 +12,8 @@ const stats = [
 ];
 ---
 
-<section class="bg-white">
-  <Container
-    class="grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-20 2xl:py-30"
-  >
+<Section class="bg-white">
+  <Container class="grid items-center gap-12 lg:grid-cols-2">
     <div>
       <span
         class="text-brand-700 bg-brand-50/40 mb-3 inline-flex rounded-full px-3 py-2 text-sm font-semibold lg:mb-4"
@@ -77,4 +76,4 @@ const stats = [
       }
     </div>
   </Container>
-</section>
+</Section>

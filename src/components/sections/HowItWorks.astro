@@ -1,0 +1,51 @@
+---
+import Container from "../ui/Container.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+
+const steps = [
+  {
+    number: "01",
+    title: "İhtiyaç analizi",
+    description:
+      "Kullanım alanınızı, su tüketiminizi ve mevcut altyapınızı değerlendiriyoruz.",
+  },
+  {
+    number: "02",
+    title: "Profesyonel kurulum",
+    description:
+      "Sistemi temiz, güvenli ve kullanım alanınıza uygun şekilde kuruyoruz.",
+  },
+  {
+    number: "03",
+    title: "Bakım ve takip",
+    description:
+      "Filtre değişimlerini ve bakım tarihlerini düzenli olarak takip ediyoruz.",
+  },
+];
+---
+
+<section class="bg-brand-900 py-16 text-white lg:py-20">
+  <Container>
+    <div class="grid gap-10">
+      <SectionHeading
+        eyebrow="Nasıl Çalışır"
+        title="Üç adımda doğru çözüm"
+        tone="light"
+      />
+
+      <div class="grid gap-4 md:grid-cols-3">
+        {
+          steps.map((step) => (
+            <div class="rounded-card border border-white/15 bg-white/10 p-5">
+              <p class="text-brand-100 text-sm font-bold">{step.number}</p>
+              <h3 class="mt-4 font-semibold">{step.title}</h3>
+              <p class="mt-3 text-sm leading-6 text-white/75">
+                {step.description}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </Container>
+</section>
