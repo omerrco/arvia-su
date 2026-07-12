@@ -1,0 +1,223 @@
+---
+import {
+  Clock3,
+  InspectionPanel,
+  LinkIcon,
+  Mail,
+  MapPin,
+  Phone,
+} from "@lucide/astro";
+
+import Container from "../ui/Container.astro";
+
+const currentYear = new Date().getFullYear();
+
+const navigationLinks = [
+  { label: "Ana Sayfa", href: "/" },
+  { label: "Hakkımızda", href: "/hakkimizda" },
+  { label: "Hizmetler", href: "/hizmetler" },
+  { label: "Ürünler", href: "/urunler" },
+  { label: "Referanslar", href: "/referanslar" },
+  { label: "İletişim", href: "/iletisim" },
+];
+
+const serviceLinks = [
+  { label: "Evsel Su Arıtma", href: "/hizmetler/evsel-su-aritma" },
+  { label: "Endüstriyel Sistemler", href: "/hizmetler/endustriyel-sistemler" },
+  { label: "Bakım ve Onarım", href: "/hizmetler/bakim-onarim" },
+  { label: "Filtre Değişimi", href: "/hizmetler/filtre-degisimi" },
+];
+
+const socialLinks = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/",
+    icon: InspectionPanel,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/",
+    icon: LinkIcon,
+  },
+];
+---
+
+<footer class="bg-brand-900 text-slate-300">
+  <Container>
+    <div
+      class="grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] lg:py-20 2xl:py-30"
+    >
+      <div>
+        <a
+          href="/"
+          class="font-display focus-visible:ring-brand-300 focus-visible:ring-offset-brand-900 inline-flex text-2xl font-bold text-white outline-none focus-visible:rounded focus-visible:ring-2 focus-visible:ring-offset-4"
+          aria-label="Arvia ana sayfa"
+        >
+          Arvia
+        </a>
+
+        <p class="mt-5 max-w-sm text-sm leading-7 text-slate-300">
+          Ev ve işletmeler için güvenilir su arıtma sistemleri, profesyonel
+          kurulum, düzenli bakım ve teknik servis çözümleri sunuyoruz.
+        </p>
+
+        <div class="mt-6 flex items-center gap-3">
+          {
+            socialLinks.map((social) => {
+              const Icon = social.icon;
+
+              return (
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  class="hover:border-brand-300/50 focus-visible:outline-brand-300 flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-300 transition hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2"
+                >
+                  <Icon
+                    class="size-4.5"
+                    stroke-width={1.8}
+                    aria-hidden="true"
+                  />
+                </a>
+              );
+            })
+          }
+        </div>
+      </div>
+
+      <nav>
+        <h2
+          id="footer-navigation-title"
+          class="font-display text-sm font-bold tracking-wide text-white"
+        >
+          Kurumsal
+        </h2>
+
+        <ul class="mt-5 space-y-3">
+          {
+            navigationLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="focus-visible:outline-brand-300 text-sm transition hover:text-white focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-4"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <nav>
+        <h2
+          id="footer-services-title"
+          class="font-display text-sm font-bold tracking-wide text-white"
+        >
+          Hizmetler
+        </h2>
+
+        <ul class="mt-5 space-y-3">
+          {
+            serviceLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="focus-visible:outline-brand-300 text-sm transition hover:text-white focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-4"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div>
+        <h2 class="font-display text-sm font-bold tracking-wide text-white">
+          İletişim
+        </h2>
+
+        <address class="mt-5 space-y-4 text-sm not-italic">
+          <a
+            href="tel:+902120000000"
+            class="group flex items-start gap-3 transition hover:text-white"
+          >
+            <Phone
+              class="text-brand-300 mt-0.5 size-4.5 shrink-0"
+              stroke-width={1.8}
+              aria-hidden="true"
+            />
+
+            <span>+90 (212) 000 00 00</span>
+          </a>
+
+          <a
+            href="mailto:info@arvia.com"
+            class="group flex items-start gap-3 transition hover:text-white"
+          >
+            <Mail
+              class="text-brand-300 mt-0.5 size-4.5 shrink-0"
+              stroke-width={1.8}
+              aria-hidden="true"
+            />
+
+            <span>info@arvia.com</span>
+          </a>
+
+          <div class="flex items-start gap-3">
+            <MapPin
+              class="text-brand-300 mt-0.5 size-4.5 shrink-0"
+              stroke-width={1.8}
+              aria-hidden="true"
+            />
+
+            <span class="leading-6"> İstanbul, Türkiye </span>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <Clock3
+              class="text-brand-300 mt-0.5 size-4.5 shrink-0"
+              stroke-width={1.8}
+              aria-hidden="true"
+            />
+
+            <span class="leading-6">
+              Pazartesi – Cumartesi<br />
+              09.00 – 18.00
+            </span>
+          </div>
+        </address>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col gap-4 border-t border-white/10 py-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>
+        © {currentYear} Arvia Su Teknolojileri. Tüm hakları saklıdır.
+      </p>
+
+      <nav aria-label="Yasal bağlantılar">
+        <ul class="flex flex-wrap gap-x-5 gap-y-2">
+          <li>
+            <a href="/gizlilik-politikasi" class="transition hover:text-white">
+              Gizlilik Politikası
+            </a>
+          </li>
+
+          <li>
+            <a href="/kvkk" class="transition hover:text-white"> KVKK </a>
+          </li>
+
+          <li>
+            <a href="/cerez-politikasi" class="transition hover:text-white">
+              Çerez Politikası
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </Container>
+</footer>

@@ -1,0 +1,21 @@
+---
+import Section from "../ui/Section.astro";
+import Container from "../ui/Container.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import LinkButton from "../ui/LinkButton.astro";
+---
+
+<Section class="bg-white">
+  <Container>
+    <div
+      class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
+    >
+      <SectionHeading
+        title="İhtiyacınıza göre doğru sistemi birlikte belirleyelim"
+        description="Kısa formu doldurun, ekibimiz ihtiyacınıza uygun çözüm için sizinle iletişime geçsin."
+      />
+
+      <LinkButton href="" class="shrink-0">Formu Doldurun</LinkButton>
+    </div>
+  </Container>
+</Section>

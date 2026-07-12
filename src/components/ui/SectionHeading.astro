@@ -4,9 +4,16 @@ interface Props {
   title: string;
   description?: string;
   tone?: "default" | "light";
+  align?: "left" | "center";
 }
 
-const { eyebrow, title, description, tone = "default" } = Astro.props;
+const {
+  eyebrow,
+  title,
+  description,
+  tone = "default",
+  align = "left",
+} = Astro.props;
 
 const tones = {
   default: {
@@ -20,9 +27,11 @@ const tones = {
     description: "text-white/75",
   },
 };
+
+const alignment = align === "center" ? "mx-auto text-center" : "";
 ---
 
-<div class="max-w-3xl">
+<div class={`max-w-3xl ${alignment}`}>
   {
     eyebrow && (
       <p

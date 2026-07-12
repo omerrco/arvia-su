@@ -1,0 +1,45 @@
+---
+import Container from "../ui/Container.astro";
+import Section from "../ui/Section.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import { testimonials } from "../../data/testimonials";
+---
+
+<Section class="bg-surface">
+  <Container>
+    <SectionHeading
+      eyebrow="Müşteri deneyimleri"
+      title="Güven, kurulumdan sonra da devam eder"
+      align="center"
+    />
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-3 lg:items-stretch">
+      {
+        testimonials.map((testimonial) => (
+          <figure class="rounded-card border-brand-200 flex h-full flex-col border bg-white/5 p-6 backdrop-blur-sm sm:p-7">
+            <blockquote class="flex-1">
+              <p class="text-muted text-base leading-7">
+                "{testimonial.quote}"
+              </p>
+            </blockquote>
+
+            <figcaption class="border-line mt-8 border-t pt-5">
+              <p class="text-base font-semibold">{testimonial.name}</p>
+
+              <p class="text-muted mt-1 text-sm">
+                {testimonial.role}
+
+                {testimonial.location && (
+                  <>
+                    <span aria-hidden="true"> · </span>
+                    {testimonial.location}
+                  </>
+                )}
+              </p>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </Container>
+</Section>
